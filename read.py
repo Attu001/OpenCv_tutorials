@@ -1,27 +1,25 @@
 import cv2 as cv
 
             # reading a image
-# img=cv.imread('photos/bcat.jpg')  # Read the image from the file
-# cv.namedWindow('cat', cv.WINDOW_NORMAL)  # Make the window resizable
+img = cv.imread('photos/bcat.jpg')  # Read the image from the file
+cv.namedWindow('cat', cv.WINDOW_NORMAL)  # Make the window resizable
 
-# cv.imshow('cat',img)  # Display the image
+cv.imshow('cat', img)  # Display the image
 
+# Reading a video
+capture = cv.VideoCapture('videos/cati.mp4')  # Read the video from the file
+while True:
+    isTrue, frame = capture.read()
+    if not isTrue:  # Break the loop if no frame is captured
+        break
+    cv.imshow('Video', frame)
 
-            #reading a video
-# capture=cv.VideoCapture('videos/cati.mp4')  # Read the video from the file
-# while True:
-#     isTrue,frame=capture.read()
-#     cv.imshow('Video',frame)
+    if cv.waitKey(20) & 0xFF == ord('d'):
+        break
 
+capture.release()  # Release the video
+cv.destroyAllWindows()  # Destroy all the windows
 
-#     if cv.waitKey(20) & 0xFF==ord('d'):
-#         break
-
-# capture.release()  # Release the video
-# cv.destroyAllWindows()  # Destroy all the windows
-
-#         # resizing and rescaling image
-
-# img = cv.imread('photos/cat.jpg')
-# cv.imshow('cat',img)
-
+# Resizing and rescaling image
+img = cv.imread('photos/cat.jpg')
+cv.imshow('cat', img)
